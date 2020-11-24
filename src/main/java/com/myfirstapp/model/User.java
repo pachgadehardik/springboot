@@ -22,9 +22,16 @@ public class User {
 
     @Override
     public String toString() {
+<<<<<<< HEAD
         return "User{" +
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 '}';
+=======
+
+        String str = (firstName!=null)?firstName+"" : "";
+        str+=(lastName!=null)? lastName : "";
+        return str.trim();
+>>>>>>> greeting-app-save-retrieve-h2
     }
 }
