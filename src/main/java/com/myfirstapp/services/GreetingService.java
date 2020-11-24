@@ -4,9 +4,11 @@ import com.myfirstapp.Greeting;
 import com.myfirstapp.interfaces.IGreetingService;
 import com.myfirstapp.model.User;
 import com.myfirstapp.repository.GreetingRepository;
+import net.bytebuddy.implementation.bind.MethodDelegationBinder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 @Service
@@ -27,5 +29,21 @@ public class GreetingService implements IGreetingService {
     @Override
     public Greeting getGreetingById(long id) {
         return greetingRepository.findById(id).get();
+    }
+
+    @Override
+    public List<Greeting> getAllGreetings() {
+        return greetingRepository.findAll();
+    }
+
+    @Override
+    public void deleteGreeting(long id) {
+        System.out.println("Inside Delete Service");
+        greetingRepository.deleteById(id);
+    }
+
+    @Override
+    public Greeting editGreeting(Greeting greeting) {
+        return greetingRepository.save(greeting);
     }
 }
